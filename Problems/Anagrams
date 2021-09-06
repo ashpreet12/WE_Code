@@ -1,0 +1,13 @@
+def signature(s: str)->str:
+    return ''.join(sorted(s))
+
+def make_groups(xs: list, f)->[list]:
+    xs = sorted(xs, key = signature)
+    return [list(g) for (k,g) in it.groupby(xs, signature)]
+    
+def remove_non_anagrams(xs: [list])->[str]:
+    return sorted([x for x in xs if len(x)>1])
+ 
+words = {'could', 'cloud', 'areas', 'arena', 'artsy', 'grips', 'hello', 'parts', 'prigs', 'strap', 'traps'}
+
+remove_non_anagrams(make_groups(words, signature)) 
